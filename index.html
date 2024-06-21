@@ -9,10 +9,21 @@
 <body>
     <div class="header">
         <h2>The Library Of Artesia</h2>
+        <input type="button" value="New Book" id="newBook">
+        <dialog id="addBook">
+            <form action="./index.html" id="form">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author">
+                <label for="read">Read Status</label>
+                <input type="text" id="read" name="read">
+            </form>
+            <button id="closeBook" autofocus>Close</button>
+            <p>Modal Dialog Test</p>
+        </dialog>
     </div>
     <div class="library">
-        <div class="book"></div>
-        <div class="book"></div>
     </div>
     <div class="footer">
         <h3>Promoting Knowledge And Communication</h3>
