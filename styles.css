@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.header, .footer {
+    height: 15vh;
+    max-height: 15vh;
+    width: 100vw;
+    text-align: center;
+    align-content: center;
+    background-color: maroon;
+    flex-basis: auto;
+}
+
+.header h2 {
+    color: white;
+    font-size: 1em;
+}
+
+.footer {
+    background-color: rgb(32, 24, 24);
+}
+
+.footer h3 {
+    color: white;
+    font-size: 1em;
+}
+
+.library {
+    height: 70vh;
+    max-height: 70vh;
+    width: 100vw;
+    background-color: antiquewhite;
+    padding: 1.25%;
+    display: grid;
+    gap: 3vw;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.book {
+    height: 100%;
+    width: 100%;
+    background-color: aquamarine;
+}
