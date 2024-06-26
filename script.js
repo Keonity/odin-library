@@ -58,6 +58,42 @@ function renderLibrary(arr) {
         newBook.appendChild(title);
         newBook.appendChild(author);
         newBook.appendChild(isRead);
+
+        var removeBtn = document.createElement("input");
+        removeBtn.setAttribute("type", "button");
+        removeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+        
+            myLib.splice(index, 1);
+            renderLibrary(myLib);
+        
+            console.log(bookTitle.value);
+        });
+        removeBtn.setAttribute("id", "removeBtn");
+        removeBtn.setAttribute("value", "Delete Record");
+        newBook.appendChild(removeBtn);
+
+        var readBtn = document.createElement("input");
+        readBtn.setAttribute("type", "button");
+        readBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+        
+            if (myLib[index].isRead === "Read") {
+                myLib[index].isRead = "Unread";
+            }
+            else {
+                myLib[index].isRead = "Read";
+            }
+
+            renderLibrary(myLib);
+        
+            console.log(bookTitle.value);
+        });
+        
+        readBtn.setAttribute("id", "readBtn");
+        readBtn.setAttribute("value", "Change Read");
+        newBook.appendChild(readBtn);
+
         library.appendChild(newBook);
     });
 }
@@ -83,6 +119,8 @@ bookSubmitForm.addEventListener("submit", (e) => {
     renderLibrary(myLib);
 
     console.log(bookTitle.value);
+
+    addBookDialog.close();
 })
 
 renderLibrary(myLib);
