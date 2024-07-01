@@ -22,17 +22,29 @@ window.onload = function() {
     addBookDialog.close();
 };
 
-function Book(title, author, isRead) {
+/* function Book(title, author, isRead) {
     this.title = title;
     this.author = author;
     this.isRead = isRead;
+} */
+
+class Book{
+    constructor(title, author, isRead) {
+        this.title = title;
+        this.author = author;
+        this.isRead = isRead;
+    }
+
+    addBookToLibrary() {
+        myLib.push(this);
+    }
 }
 
-function addBookToLibrary(book) {
-    if (Object.getPrototypeOf(book) === Book.prototype) {
+/* function addBookToLibrary(book) {
+    if (Object.getPrototypeOf(book) === Book.prototype) { // If this is a book, add it to the library
         myLib.push(book);
     };
-}
+} */
 
 function renderLibrary(arr) {
 
@@ -99,10 +111,10 @@ function renderLibrary(arr) {
 }
 
 const enchanted = new Book("Enchanted", "Ariva Derice", "Read");
-addBookToLibrary(enchanted);
+enchanted.addBookToLibrary();
 
 const yuna = new Book("Yuna, Dark City", "Anonymous", "Unread");
-addBookToLibrary(yuna);
+yuna.addBookToLibrary();
 
 newBookBtn.addEventListener("click", () => {
     addBookDialog.showModal();
