@@ -40,12 +40,6 @@ class Book{
     }
 }
 
-/* function addBookToLibrary(book) {
-    if (Object.getPrototypeOf(book) === Book.prototype) { // If this is a book, add it to the library
-        myLib.push(book);
-    };
-} */
-
 function renderLibrary(arr) {
 
     while (library.firstChild) {
