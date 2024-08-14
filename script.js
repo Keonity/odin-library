@@ -18,6 +18,8 @@ const bookAuthor = document.querySelector("#author");
 
 const bookRead = document.querySelector("#read");
 
+const bookError = document.querySelector(".error");
+
 window.onload = function() {
     addBookDialog.close();
 };
@@ -118,15 +120,80 @@ closeBookDialog.addEventListener("click", () => {
     addBookDialog.close();
 });
 
+bookTitle.addEventListener("input", (e) => {
+    if (bookTitle.validity.valid) {
+        bookError.textContent = "";
+        bookError.className = "error";
+    }
+    else {
+        if (bookTitle.validity.valueMissing) {
+            bookError.textContent = "Please enter a value into the book title field.";
+        }
+        bookError.className = "error active";
+    }
+})
+
+bookAuthor.addEventListener("input", (e) => {
+    if (bookAuthor.validity.valid) {
+        bookError.textContent = "";
+        bookError.className = "error";
+    }
+
+    else {
+        if (bookAuthor.validity.valueMissing) {
+            bookError.textContent = "Please enter a value into the book author field.";
+        }
+        bookError.className = "error active";
+    }
+})
+
+bookRead.addEventListener("input", (e) => {
+    readConstraint = new RegExp("[Rr]ead|[Uu]nread", "");
+    console.log(readConstraint.test(bookRead.value));
+    if (bookRead.validity.valid) {
+        bookError.textContent = "";
+        bookError.className = "error";
+    }
+    else {
+        if (bookRead.validity.valueMissing) {
+            bookError.textContent = "Please enter a value into the book author field.";
+        }
+        else if (!readConstraint.test(bookRead)) {
+            bookError.textContent = "Book must be read or unread.";
+        }  
+        bookError.className = "error active";
+    }
+})
+
 bookSubmitForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    myLib.push(new Book(bookTitle.value, bookAuthor.value, bookRead.value));
-    renderLibrary(myLib);
+    readConstraint = new RegExp("[Rr]ead|[Uu]nread", "");
+    console.log(readConstraint);
 
-    console.log(bookTitle.value);
+    if (bookTitle.validity.valueMissing) {
+        bookError.textContent = "Please enter a value into the book title field.";
+        bookError.className = "error active";
+    }
 
-    addBookDialog.close();
+    if (bookRead.validity.valueMissing) {
+        bookError.textContent = "Please enter a value into the book author field.";
+    }
+
+    if (!readConstraint.test(bookRead.value)) {
+        bookError.textContent = "Book must be read or unread.";
+        bookError.className = "error active";
+    }  
+
+    else {
+        myLib.push(new Book(bookTitle.value, bookAuthor.value, bookRead.value));
+        renderLibrary(myLib);
+    
+        console.log(bookTitle.value);
+    
+        addBookDialog.close();
+    }
+
 })
 
 renderLibrary(myLib);

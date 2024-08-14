@@ -11,7 +11,7 @@
         <h2>The Library Of Artesia</h2>
         <input type="button" value="New Book" id="newBook">
         <dialog id="addBook">
-            <form action="" id="form">
+            <form action="" id="form" novalidate>
                 <label for="title">Title</label>
                 <input required type="text" id="title" name="title">
                 <label for="author">Author</label>
@@ -19,6 +19,7 @@
                 <label for="read">Read Status</label>
                 <input required type="text" id="read" name="read">
                 <input id="submit" type="submit"></input>
+                <span class="error" aria-live="polite"></span>
             </form>
             <button id="closeBook" autofocus>Close</button>
         </dialog>
